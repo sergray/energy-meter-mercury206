@@ -22,13 +22,13 @@ Install package with all dependencies into virtualenv::
 
 Create sample configuration (requires Python 2.7)::
 
-    $ python -c "from runpy import run_module; run_module('mercury206.config', {'__file__': 'config.py', '__name__': '__main__'})"
+    $ mercury206_config
 
 Edit ``${HOME}/.mercury206/config.ini``. It is possible to override default configuration path with environment variable ``MERCURY_CONFIG``.
 
 Get display readings::
 
-    $ python -c "from runpy import run_module; run_module('mercury206')"
+    $ mercury206_readings
 
 Использование
 -------------
@@ -41,10 +41,10 @@ Get display readings::
 
 Создадим шаблон настроек (предполагает наличие Python 2.7)::
 
-    $ python -c "from runpy import run_module; run_module('mercury206.config', {'__file__': 'config.py', '__name__': '__main__'})"
+    $ mercury206_config
 
 Отредактируем ``${HOME}/.mercury206/config.ini``. Путь в конфигурационному файлу можно переопределить с помощью переменной окружения ``MERCURY_CONFIG``.
 
 Если путь к последовательному порту и адрес счётчика указаны правильно,получим показания счётчика::
 
-    $ python -c "from runpy import run_module; run_module('mercury206')"
+    $ mercury206_readings

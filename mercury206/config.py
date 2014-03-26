@@ -36,6 +36,7 @@ def create_sample_config(path=CONFIG_PATH):
     cfg.set('mercury', 'address', 0)
     with open(path, 'w') as config_file:
         cfg.write(config_file)
+    logger.info('Wrote %r', path)
 
 
 def settings_from_config(path=CONFIG_PATH):
@@ -58,24 +59,26 @@ def settings_from_environ():
     }
 
 
+def get_settings():
+    try:
+        settings = settings_from_environ()
+        logger.debug('env settings %r', settings)
+    except KeyError:
+        try:
+            settings = settings_from_config()
+            logger.debug('ini %r settings %r', CONFIG_PATH, settings)
+        except (RuntimeError, ConfigParser.NoSectionError) as exc:
+            logger.debug(repr(exc))
+            settings = None
+            print("""Ошибка чтения настроек! Необходимо задать \
+    переменные окружения {} и {},\nили создать файл настроек {}: \
+    python {}""".format(CONFIG_DEVICE_ENV, CONFIG_ADDRESS_ENV,
+                CONFIG_PATH, __file__), file=sys.stderr)
+            sys.exit(1)
+    return settings
+
+
 if __name__ == '__main__':
     create_sample_config()
     logger.info('created %r config', CONFIG_PATH)
     sys.exit(0)
-
-
-try:
-    settings = settings_from_environ()
-    logger.debug('env settings %r', settings)
-except KeyError:
-    try:
-        settings = settings_from_config()
-        logger.debug('ini %r settings %r', CONFIG_PATH, settings)
-    except (RuntimeError, ConfigParser.NoSectionError) as exc:
-        logger.debug(repr(exc))
-        settings = None
-        print("""Ошибка чтения настроек! Необходимо задать \
-переменные окружения {} и {},\nили создать файл настроек {}: \
-python {}""".format(CONFIG_DEVICE_ENV, CONFIG_ADDRESS_ENV,
-            CONFIG_PATH, __file__), file=sys.stderr)
-        sys.exit(1)

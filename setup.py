@@ -4,11 +4,7 @@
 import os
 import sys
 
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -19,7 +15,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='energy-meter-mercury206',
-    version='0.0.1',
+    version='0.0.2',
     description='Get readings from energy meter Mercury 206 with Python over serial interface',
     long_description=readme + '\n\n' + history,
     author='Sergey Panfilov',
@@ -28,6 +24,13 @@ setup(
     packages=[
         'mercury206',
     ],
+    entry_points={
+        'console_scripts': [
+            'mercury206_config = mercury206.scripts:sample_config',
+            'mercury206_readings = mercury206.scripts:display_readings',
+            'mercury206_vcp = mercury206.scripts:instant_vcp',
+        ]
+    },
     package_dir={'mercury206': 'mercury206'},
     include_package_data=True,
     install_requires=[
