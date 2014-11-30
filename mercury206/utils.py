@@ -34,3 +34,11 @@ def digitize(byte_string):
     """
     str_num = ''.join(upper_hex(b) for b in byte_string)
     return int(str_num)
+
+
+def digitized_triple(data):
+    r"""
+    >>> digitized_triple('\x01\x23\x45\x67\x89' * 3)
+    [234567.89, 12345.67, 890123.45]
+    """
+    return [digitize(data[i:i+4]) / 100.0 for i in range(1, 13, 4)]
