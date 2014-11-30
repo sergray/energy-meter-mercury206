@@ -48,3 +48,9 @@ Get display readings::
 Если путь к последовательному порту и адрес счётчика указаны правильно,получим показания счётчика::
 
     $ mercury206_readings
+
+Ссылки
+------
+
+- http://www.ab-log.ru/smart-house/mercury-230
+- https://github.com/mrkrasser/MercuryStats/blob/master/Readme.ru.md
