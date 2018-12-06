@@ -42,6 +42,9 @@ def send_command(port, address, command, *params, **kwargs):
         time.sleep(0.1)
         answer = port.read(MAX_NUMBER_OF_BYTES)
         logger.debug('R %s', pretty_hex(answer))
+    if message + message[:4] == answer[:len(message)+4]:
+        logger.debug("E %s", pretty_hex(answer[:len(message)]))
+        answer = answer[len(message):]
     received_address, received_data = unpack_msg(answer)
     if received_address != address:
         raise UnexpectedAddress(received_address)
