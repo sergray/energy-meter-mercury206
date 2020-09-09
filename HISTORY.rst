@@ -19,3 +19,9 @@ History
 
 * Add links to related projects
 * Implement commands monthly_active_energy and monthly_reactive_energy reading historical monthly data.
+
+0.0.4 (2020-09-09)
+++++++++++++++++++
+
+* Update and fix requirements
+* Fix _calculateCrcString ImportError in protocol module
