@@ -46,7 +46,7 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
         'Natural Language :: Russian',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.7',
     ],
     test_suite='tests',
 )

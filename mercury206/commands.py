@@ -1,6 +1,6 @@
 # coding=utf8
-from communications import send_command, command_shortcut
-from utils import digitize, digitized_triple
+from .communications import send_command, command_shortcut
+from .utils import digitize, digitized_triple
 
 __all__ = [
     'connect', 'display_readings', 'instant_vcp',

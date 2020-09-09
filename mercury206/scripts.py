@@ -1,13 +1,13 @@
 # coding=utf8
 "Console scripts entries"
-from __future__ import print_function
+
 
 import logging
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-import config
-from communications import open_serial
-import commands
+from . import config
+from .communications import open_serial
+from . import commands
 
 
 

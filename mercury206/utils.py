@@ -27,9 +27,9 @@ def pretty_hex(byte_string):
     return ' '.join(upper_hex(c) for c in byte_string)
 
 
-def digitize(byte_string):
+def digitize(byte_string) -> int:
     r"""
-    >>> digitize('\x00\x12\x34')
+    >>> digitize(b'\x00\x12\x34')
     1234
     """
     str_num = ''.join(upper_hex(b) for b in byte_string)

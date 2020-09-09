@@ -17,7 +17,7 @@ def pack_msg(address, *args, **kwargs):
 
     Return string with bytes
 
-    >>> from utils import pretty_hex
+    >>> from .utils import pretty_hex
     >>> pretty_hex(pack_msg(10925856, 0x28))
     '00 A6 B7 20 28 AF 70'
     >>> pretty_hex(pack_msg(10925856, 0x28, crc=False))

@@ -1,11 +1,11 @@
 # coding=utf8
 "Configuration settings"
-from __future__ import print_function
+
 import os
 import sys
 import logging
 
-import ConfigParser
+import configparser
 
 
 CONFIG_PATH_ENV = 'MERCURY_CONFIG'
@@ -28,7 +28,7 @@ def create_sample_config(path=CONFIG_PATH):
     dirpath = os.path.dirname(path)
     if not os.path.isdir(dirpath):
         os.makedirs(dirpath)
-    cfg = ConfigParser.ConfigParser()
+    cfg = configparser.ConfigParser()
     for section in ['serial', 'mercury']:
         if not cfg.has_section(section):
             cfg.add_section(section)
@@ -43,7 +43,7 @@ def settings_from_config(path=CONFIG_PATH):
     "Return dictionary with settings from INI file"
     if not os.path.exists(path):
         raise RuntimeError('missing config %r' % path)
-    cfg = ConfigParser.ConfigParser()
+    cfg = configparser.ConfigParser()
     cfg.read(path)
     return {
         'device': cfg.get('serial', 'device'),
@@ -67,7 +67,7 @@ def get_settings():
         try:
             settings = settings_from_config()
             logger.debug('ini %r settings %r', CONFIG_PATH, settings)
-        except (RuntimeError, ConfigParser.NoSectionError) as exc:
+        except (RuntimeError, configparser.NoSectionError) as exc:
             logger.debug(repr(exc))
             settings = None
             print("""Ошибка чтения настроек! Необходимо задать \
