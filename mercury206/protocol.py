@@ -2,7 +2,7 @@
 
 from struct import pack, unpack
 
-from minimalmodbus import _calculateCrcString as modbus_crc
+from minimalmodbus import _calculate_crc_string as modbus_crc
 
 
 ADDRESS_FMT = '!I'  # unsigned integer in network order

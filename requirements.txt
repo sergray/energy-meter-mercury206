@@ -1,3 +1,2 @@
-wheel==0.22.0
-minimalmodbus
-pyserial
+minimalmodbus==1.0.2
+pyserial==3.4
