@@ -7,8 +7,8 @@ import time
 
 import serial
 
-from protocol import pack_msg, unpack_msg
-from utils import pretty_hex
+from .protocol import pack_msg, unpack_msg
+from .utils import pretty_hex
 
 
 logger = logging.getLogger(__file__)

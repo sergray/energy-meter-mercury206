@@ -20,7 +20,7 @@ Install package with all dependencies into virtualenv::
 
     $ pip install git+https://github.com/sergray/energy-meter-mercury206.git
 
-Create sample configuration (requires Python 2.7)::
+Create sample configuration (requires Python 3.7)::
 
     $ mercury206_config
 
@@ -39,7 +39,7 @@ Get display readings::
     $ source mercury206.env/bin/activate
     $ pip install git+https://github.com/sergray/energy-meter-mercury206.git
 
-Создадим шаблон настроек (предполагает наличие Python 2.7)::
+Создадим шаблон настроек (предполагает наличие Python 3.7)::
 
     $ mercury206_config
 
