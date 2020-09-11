@@ -33,7 +33,7 @@ def create_sample_config(path=CONFIG_PATH):
         if not cfg.has_section(section):
             cfg.add_section(section)
     cfg.set('serial', 'device', '')
-    cfg.set('mercury', 'address', 0)
+    cfg.set('mercury', 'address', '123456')
     with open(path, 'w') as config_file:
         cfg.write(config_file)
     logger.info('Wrote %r', path)
