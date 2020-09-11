@@ -1,7 +1,9 @@
 # coding=utf8
 
+from typing import Union, Tuple
 
-def upper_hex(byte):
+
+def upper_hex(byte: Union[str, bytes, int]) -> str:
     r"""
     >>> upper_hex('\x00')
     '00'
@@ -9,13 +11,36 @@ def upper_hex(byte):
     '00'
     >>> upper_hex(5)
     '05'
+    >>> upper_hex(b'\x01')
+    '01'
+    >>> upper_hex('')
+    Traceback (most recent call last):
+    ...
+    ValueError: expected single byte
+    >>> upper_hex(b'')
+    Traceback (most recent call last):
+    ...
+    ValueError: expected single byte
+    >>> upper_hex('\x00\x01')
+    Traceback (most recent call last):
+    ...
+    ValueError: expected single byte
+    >>> upper_hex(b'\x00\x01')
+    Traceback (most recent call last):
+    ...
+    ValueError: expected single byte
     """
-    if isinstance(byte, str):
-        byte = ord(byte)
+    if isinstance(byte, (str, bytes)):
+        if len(byte) != 1:
+            raise ValueError('expected single byte')
+        if isinstance(byte, str):
+            byte = ord(byte)
+        elif isinstance(byte, bytes):
+            byte = byte[0]
     return '%02X' % byte
 
 
-def pretty_hex(byte_string):
+def pretty_hex(byte_string) -> str:
     r"""
     >>> pretty_hex('Python')
     '50 79 74 68 6F 6E'
@@ -36,9 +61,11 @@ def digitize(byte_string) -> int:
     return int(str_num)
 
 
-def digitized_triple(data):
+def digitized_triple(data) -> Tuple[float, float, float]:
     r"""
     >>> digitized_triple('\x01\x23\x45\x67\x89' * 3)
-    [234567.89, 12345.67, 890123.45]
+    (234567.89, 12345.67, 890123.45)
+    >>> digitized_triple(b'\x01\x23\x45\x67\x89' * 3)
+    (234567.89, 12345.67, 890123.45)
     """
-    return [digitize(data[i:i+4]) / 100.0 for i in range(1, 13, 4)]
+    return tuple(digitize(data[i:i+4]) / 100.0 for i in range(1, 13, 4))
