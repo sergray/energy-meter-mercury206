@@ -25,3 +25,9 @@ History
 
 * Update and fix requirements
 * Fix _calculateCrcString ImportError in protocol module
+
+
+0.1.0 (2020-09-11)
+++++++++++++++++++
+
+* Update to Python 3
