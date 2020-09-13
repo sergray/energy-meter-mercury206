@@ -15,7 +15,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='energy-meter-mercury206',
-    version='0.1.0',
+    version='0.1.1',
     description='Get readings from energy meter Mercury 206 with Python over serial interface',
     long_description=readme + '\n\n' + history,
     author='Sergey Panfilov',
@@ -41,12 +41,14 @@ setup(
     zip_safe=False,
     keywords='energy-meter-mercury206',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Natural Language :: Russian',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
     test_suite='tests',
 )

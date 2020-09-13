@@ -26,8 +26,12 @@ History
 * Update and fix requirements
 * Fix _calculateCrcString ImportError in protocol module
 
-
 0.1.0 (2020-09-11)
 ++++++++++++++++++
 
 * Update to Python 3
+
+0.1.1 (2020-09-11)
+++++++++++++++++++
+
+* Test Python 3.6, 3.7, 3.8 with Travis CI
